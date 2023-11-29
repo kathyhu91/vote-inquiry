@@ -1,5 +1,4 @@
 <template>
-  {{ votes }}
   <TermMenu
     :election-Years="years"
     :specify-Year="curYear"
@@ -10,7 +9,8 @@
   </h2>
   <div class="mb-8">
     <h4 class="h4 mb-2"><i class="bi bi-compass me-2"></i>查看地區詳情</h4>
-    <SearchBar></SearchBar>
+    {{ city }}{{ district }}
+    <SearchBar v-model:city="city" v-model:district="district"></SearchBar>
   </div>
   <div class="mb-8">
     <h4 class="h4 mb-8">
@@ -46,6 +46,7 @@
       </div>
     </div>
   </div>
+  {{ votes }}
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -62,7 +63,7 @@ import PartyAnalysis from '@/components/PastAnal/PartyAnalysis.vue'
 import { storeToRefs } from 'pinia'
 import { usePastElectionStore } from '@/stores/pastElectionsStore'
 
-const { votes } = storeToRefs(usePastElectionStore())
+const { votes, city, district } = storeToRefs(usePastElectionStore())
 
 // dummy data
 // Term Menu Data
