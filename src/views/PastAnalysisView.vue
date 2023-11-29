@@ -1,4 +1,5 @@
 <template>
+  {{ votes }}
   <TermMenu
     :election-Years="years"
     :specify-Year="curYear"
@@ -57,6 +58,11 @@ import CandidateSummary from '@/components/PastAnal/CandidateSummary.vue'
 import AnalysisMenu from '@/components/PastAnal/AnalysisMenu.vue'
 import VotingAnalysis from '@/components/PastAnal/VotingAnalysis.vue'
 import PartyAnalysis from '@/components/PastAnal/PartyAnalysis.vue'
+
+import { storeToRefs } from 'pinia'
+import { usePastElectionStore } from '@/stores/pastElectionsStore'
+
+const { votes } = storeToRefs(usePastElectionStore())
 
 // dummy data
 // Term Menu Data
